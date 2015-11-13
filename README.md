@@ -4,7 +4,9 @@ a single page react webapp
 initial setup
 =============
 - `npm install -g browserify`
-- `npm install --save react react-dom babelify babel-preset-react babel-preset-es2015`
+- `npm install --save react react-dom babelify babel-preset-react babel-preset-es2015 react-bootstrap`
+
+- download a `bootstrap.min.css` from bootstrap
 
 when a js file has changed
 ==========================
