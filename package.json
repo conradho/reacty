@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "build": "browserify -t [ babelify --presets [ react es2015 ] ] src/main.jsx -o bundle.js"
   },
   "repository": {
     "type": "git",

@@ -9,12 +9,7 @@ setup
 
 when a js file has changed
 ==========================
-- `browserify -t [ babelify --presets [ react es2015 ] ] src/main.js -o bundle.js`
-
-notes
-=====
-- doing the browserify way ==> remember to take out the `<script type="text/babel">`
-- do not need to do the babel conversion stuff because browserify converts for you
+- `node run build` (see package.json for details on what it does)
 
 
 Behind the scenes
@@ -27,3 +22,8 @@ Behind the scenes
     - `npm install karma mocha karma-mocha chai karma-chai`
     - karma init
     - karma start
+
+notes
+=====
+- doing the browserify way ==> remember to take out the `<script type="text/babel">`
+- do not need to do the babel conversion stuff because browserify converts for you
