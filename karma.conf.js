@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Fri Nov 13 2015 19:10:16 GMT+0000 (GMT)
+/*eslint-env commonjs */
 
 module.exports = function(config) {
   config.set({
@@ -10,17 +10,20 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    // NEED TO PUT CHAI AFTER REQUIREJS
+    frameworks: ['mocha', 'requirejs', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'tests/*Spec.js'
+      'test-main.js',
+      {pattern: 'tests/*Spec.js', included: false}
     ],
 
 
     // list of files to exclude
     exclude: [
+      '*.swp'
     ],
 
 
@@ -65,5 +68,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultanous
     concurrency: Infinity
-  })
-}
+  });
+};

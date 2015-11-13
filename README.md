@@ -19,6 +19,7 @@ note
 
 test setup
 ==========
-- `npm install -g karma karma-jasmine`
+- `npm install -g karma-cli`
+- `npm install karma mocha karma-mocha chai karma-chai`
 - karma init
 - karma start
