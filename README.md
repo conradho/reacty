@@ -6,6 +6,7 @@ setup
 - install local packages with `npm install`
 - `npm install -g browserify karma-cli`
 - download a `bootstrap.min.css` from bootstrap
+- run a `node run build`
 
 when a js file has changed
 ==========================
@@ -17,6 +18,7 @@ Behind the scenes
 - initial setup
     - `npm install -g browserify`
     - `npm install --save react react-dom babelify babel-preset-react babel-preset-es2015 react-bootstrap`
+- then `npm install react-boostrap`
 - tests setup
     - `npm install -g karma-cli`
     - `npm install karma mocha karma-mocha chai karma-chai`
