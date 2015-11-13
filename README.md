@@ -16,3 +16,9 @@ note
 ====
 - doing the browserify way ==> remember to take out the `<script type="text/babel">`
 - do not need to do the babel conversion stuff because browserify converts for you
+
+test setup
+==========
+- `npm install -g karma karma-jasmine`
+- karma init
+- karma start
