@@ -4,13 +4,9 @@ a single page react webapp
 setup
 =====
 - install local packages with `npm install`
-- `npm install -g browserify karma-cli`
 - download a `bootstrap.min.css` from bootstrap
-- run a `node run build`
-
-when a js file has changed
-==========================
-- `node run build` (see package.json for details on what it does)
+- `node run build` to build bundle.js each time js is changed
+- `node test` or `node run test` to run tests
 
 
 Behind the scenes
