@@ -3,6 +3,9 @@ a single page react webapp
 
 setup
 =====
+- make sure you are running updated node
+    - `npm install -g nvm`
+    - then after sourcing bash again, nvm install 5.0.0
 - install local packages with `npm install`
 - download a `bootstrap.min.css` from bootstrap
 - `node run build` to build bundle.js each time js is changed
