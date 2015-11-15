@@ -11,13 +11,13 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     // NEED TO PUT CHAI AFTER REQUIREJS
-    frameworks: ['mocha', 'requirejs', 'chai'],
+    frameworks: ['browserify', 'mocha', 'requirejs', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'test-main.js',
-      {pattern: 'tests/*Spec.js', included: false}
+      {pattern: 'tests/*', included: false}
     ],
 
 
@@ -30,6 +30,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'tests/*.js': [ 'browserify' ]
+    },
+
+    browserify: {
+      debug: true,
+      transform: [ ['babelify', {'presets': ['react', 'es2015']}]],
+      extensions: ['.js', '.jsx']
     },
 
 
