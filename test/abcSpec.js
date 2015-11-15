@@ -1,12 +1,16 @@
 /*eslint-env mocha */
 
 import { setupTestDom } from './testDom.js'
-setupTestDom('<html><body></body></html>');
-// console.log(document);
+setupTestDom('<html><body><div id="hi"></div></body></html>');
 
-describe('hilo', function() {
+describe('quickcheck for jsdom/setupTestDom', function() {
   'use strict';
-  it('should fail', function() {
-    expect(1).to.equal(2);
+  it('testing abc', function () {
+    expect('hello').to.equal('hello');
+  });
+  it('should be able to inject into dom', function() {
+    console.log(document);
+    expect(document.getElementsByTagName('div').length).to.equal(1);
+    expect(document.getElementById("hi")).not.to.be.null;
   });
 });
