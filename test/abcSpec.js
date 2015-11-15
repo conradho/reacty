@@ -1,5 +1,6 @@
 /*eslint-env mocha */
 
+import { expect } from 'chai'
 import { setupTestDom } from './testDom.js'
 setupTestDom('<html><body><div id="hi"></div></body></html>');
 

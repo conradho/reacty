@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "description": "a single page react webapp",
   "main": "bundle.js",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
-    "test": "karma start",
-    "build": "browserify -t [ babelify --presets [ react es2015 ] ] src/main.jsx -o bundle.js"
+    "test": "time mocha --compilers js:babel-core/register",
+    "build": "time browserify -t [ babelify --presets [ react es2015 ] ] src/main.jsx -o bundle.js"
+  },
+  "babel": {
+    "presets": ["react", "es2015"]
   },
   "repository": {
     "type": "git",
@@ -20,19 +20,13 @@
     "url": "https://github.com/conradho/reacty/issues"
   },
   "devDependencies": {
+    "babel-core": "^6.1.21",
     "babel-preset-es2015": "~6.1.18",
     "babel-preset-react": "~6.1.18",
     "babelify": "~7.2.0",
     "browserify": "^12.0.1",
     "chai": "~3.4.1",
     "jsdom": "^7.0.2",
-    "karma": "~0.13.15",
-    "karma-babel-preprocessor": "^6.0.1",
-    "karma-browserify": "^4.4.0",
-    "karma-chai": "~0.1.0",
-    "karma-chrome-launcher": "~0.2.1",
-    "karma-mocha": "~0.2.0",
-    "karma-requirejs": "~0.2.2",
     "mocha": "~2.3.3",
     "react": "~0.14.2",
     "react-bootstrap": "~0.27.3",
