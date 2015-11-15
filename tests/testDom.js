@@ -1,11 +1,13 @@
 /*eslint-env node*/
 
-module.exports = function(markup) {
+
+import 'jsdom'
+
+export function setupTestDom (markup) {
   if (typeof document !== 'undefined') return;
-  var jsdom = require('jsdom').jsdom;
   global.document = jsdom(markup || '');
   global.window = document.parentWindow;
   global.navigator = {
     userAgent: 'node.js'
   };
-};
+} // no semicolon!

@@ -1,8 +1,8 @@
 /*eslint-env mocha */
 
-// require(['testDom'])('<html><body></body></html>');
+import { setupTestDom } from './testDom.js'
+setupTestDom('<html><body></body></html>');
 // console.log(document);
-import 'jsdom'
 
 describe('hilo', function() {
   'use strict';
