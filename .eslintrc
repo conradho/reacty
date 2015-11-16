@@ -21,7 +21,3 @@ ecmaFeatures:
   modules: true
 plugins:
   - react
-globals:
-  - chai: true
-  - expect: true
-  - sinon: true
