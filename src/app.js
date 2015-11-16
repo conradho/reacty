@@ -1,17 +1,26 @@
 
 import React from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { buttonsInstance } from './reactBootstrapButton.jsx'
-import { CommentBox } from './reactComponents.jsx'
+import { HelloWorld, CommentBox } from './reactComponents.jsx'
 
-render(
+ReactDOM.render(
   buttonsInstance,
   document.getElementById('buttony')
 );
 
-render(
-  <CommentBox />,
-  document.getElementById('commentBoxy')
+ReactDOM.render(
+  <HelloWorld />,
+  document.getElementById('example')
 );
 
+var data = [
+  {author: "conrad", text: "msg from conrad"},
+  {author: "jordan", text: "msg from jordan"},
+];
+ReactDOM.render(
+  <CommentBox data={data}/>,
+  document.getElementById('commentBoxy')
+);
 // alert('react should have rendered');
