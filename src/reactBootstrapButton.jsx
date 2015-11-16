@@ -4,11 +4,7 @@ import React from 'react';  // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('example')
-);
-const buttonsInstance = (
+export const buttonsInstance = (
   <ButtonToolbar>
     {/* Standard button */}
     <Button bsSize="small">Default</Button>
@@ -31,8 +27,4 @@ const buttonsInstance = (
     {/* Deemphasize a button by making it look like a link while maintaining button behavior */}
     <Button bsStyle="link" bsSize="small">Link</Button>
   </ButtonToolbar>
-);
-ReactDOM.render(
-  buttonsInstance,
-  document.getElementById('buttony')
 );

@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
-    "build": "browserify -t [ babelify --presets [ react es2015 ] ] src/main.jsx -o bundle.js"
+    "build": "browserify -t [ babelify --presets [ react es2015 ] ] src/app.js -o bundle.js"
   },
   "babel": {
     "presets": ["react", "es2015"]

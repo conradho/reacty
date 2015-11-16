@@ -10,7 +10,7 @@ describe('quickcheck for jsdom/setupTestDom', function() {
     expect('hello').to.equal('hello');
   });
   it('should be able to inject into dom', function() {
-    console.log(document);
+    // console.log(document);
     expect(document.getElementsByTagName('div').length).to.equal(1);
     expect(document.getElementById("hi")).not.to.be.null;
   });
