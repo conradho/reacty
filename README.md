@@ -28,3 +28,14 @@ notes
 =====
 - doing the browserify way ==> remember to take out the `<script type="text/babel">`
 - do not need to do the babel conversion stuff because browserify converts for you
+
+- use jest for unittests because your can parallelize
+    - but figure out when we can mock more of `node_modules/*`
+    - see if they ever solve the import hoisting = cannot dontMock issue
+- jest preprocessor for babel requires .babelrc with es2015 and react presets
+- maybe still use mocha/something else for integrationy tests?
+    - `npm test` to run both? vs `npm run unittest` etc will run only jest
+- for a component
+    - test it has xyz in header after rendering
+    - test it has incorp'd xyz component?
+    - test on click etc behavior
