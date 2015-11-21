@@ -1,65 +1,48 @@
+/*eslint-env commonjs */
 
 import React from 'react';
-// import { createClass } from 'react';  // eslint-disable-line no-unused-vars
+import { Button, ButtonToolbar } from 'react-bootstrap';
+import R from 'ramda';
 
-class HelloWorld extends React.Component {
-  render () {
-    return <p>Hello, world!</p>;
+class SingleButton extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {isActive: false};
   }
-}
-
-
-class CommentList extends React.Component {
   render () {
-    var commentNodes = this.props.data.map(function (comment) {
-      return (
-        <Comment author={comment.author}>{comment.text}</Comment>
-      );
-    });
     return (
-      <div className='commentList'>
-        {commentNodes}
-      </div>
+      <Button
+        active={this.state.isActive}
+        bsStyle={this.props.buttonStyle}
+        >
+        {this.props.name}
+      </Button>
     );
   }
 }
 
-class CommentForm extends React.Component {
+class ManyButtons extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {activeButton: 1};
+  }
   render () {
     return (
-      <div className='commentForm'>
-        Hello, I am commentForm
-      </div>
+      <ButtonToolbar bsSize='small'>
+        {R.map(
+          (script) => {
+            return (
+              <SingleButton
+                key={script.id}
+                name={script.name}
+                buttonStyle={script.style}
+              />
+            );
+          },
+          this.props.scripts
+        )}
+      </ButtonToolbar>
     );
   }
 }
-
-class CommentBox extends React.Component {
-  render () {
-    return (
-      <div className='commentBox'>
-        <h1>Comments</h1>
-        <CommentList data={this.props.data} />
-        <CommentForm />
-      </div>
-    );
-  }
-}
-
-
-
-class Comment extends React.Component {
-  render () {
-    return (
-      <div className='comment'>
-        <h2 className='commentAuthor'>
-          {this.props.author}
-        </h2>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-
-// need to put it after class is declared
-export { CommentBox, HelloWorld };
+export { ManyButtons };

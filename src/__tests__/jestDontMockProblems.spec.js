@@ -1,9 +1,9 @@
 /*eslint-env jest */
 
-jest.dontMock('./jestDontMockExample.js');
+jest.dontMock('../jestDontMockExample.js');
 
 // this doesn't work
-import hiModule, { hiConst, hiObj, hiFunction, hiClass } from './jestDontMockExample.js';
+import hiModule, { hiConst, hiObj, hiFunction, hiClass } from '../jestDontMockExample.js';
 
 describe('Jest dontMock does not work with ES6 imports', () => {
   // see here for details https://github.com/babel/babel-jest/issues/16
@@ -31,7 +31,7 @@ describe('Jest dontMock does not work with ES6 imports', () => {
 });
 
 
-const es6Module = require('./jestDontMockExample.js');
+const es6Module = require('../jestDontMockExample.js');
 
 describe('Jest dontMock barely works with requirejs', () => {
   it('does not mock out functions', () => {
