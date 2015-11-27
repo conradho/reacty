@@ -59,7 +59,7 @@ describe('ManyButtons react component', () => {
     // expect(singleButton).toHaveClass('active');
   });
 
-  it('can change isActive state of SingleButton when clicked', () => {
+  it('can turn on isActive state of SingleButton when clicked', () => {
     const listOfSingleButtonComponents = TestUtils.scryRenderedComponentsWithType(
       buttons, SingleButton
     );
@@ -74,8 +74,16 @@ describe('ManyButtons react component', () => {
       expect(button.props.active).toBe(false);
     }
 
-    // TestUtils.Simulate.click(singleButton);
-    // check that the single clicked button now is active
+    const listOfButtonDomComponents = TestUtils.scryRenderedDOMComponentsWithTag(
+        buttons, 'button'
+    );
+    const secondButton = listOfButtonDomComponents[1];
+
+    console.log(`before ${buttons.state.activeButton}`);
+    TestUtils.Simulate.click(secondButton);
+    console.log(`after ${buttons.state.activeButton}`);
+    expect(listOfSingleButtonComponents[1].state.isActive).toBe(true);
+    expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
   });
 });
 
@@ -85,9 +93,10 @@ describe('ManyButtons react component', () => {
     {'id': 2, 'name': 'scripty2', 'style': 'primary'},
     {'id': 3, 'name': 'touch me', 'style': 'danger'},
   ];
-  it('first cut at shallow render', () => {
+  it('can test with shallow render', () => {
+    const reactManyButtonsElement = <ManyButtons scripts={mockScripts}/>;
     const shallowRenderer = TestUtils.createRenderer();
-    shallowRenderer.render(<ManyButtons scripts={mockScripts}/>);
+    shallowRenderer.render(reactManyButtonsElement);
     const result = shallowRenderer.getRenderOutput();
 
     expect(result.type).toBe(ButtonToolbar);
@@ -98,8 +107,16 @@ describe('ManyButtons react component', () => {
       expect(child.type).toBe(SingleButton);
     })(result.props.children);
 
-    expect(result.props.children[1]).toEqual(
-      <SingleButton key='2' name='scripty2' buttonStyle='primary'/>
+    const secondChild = result.props.children[1];
+    expect(secondChild).toEqual(
+      <SingleButton
+        key='2'
+        name='scripty2'
+        buttonStyle='primary'
+        // on one hand, this doesn't really test anything
+        // on the other hand, this is never true unless you pass it in
+        onActiveChange={secondChild.props.onActiveChange}
+      />
     );
   });
 });
