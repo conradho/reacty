@@ -98,12 +98,10 @@ describe('ManyButtons react component', () => {
       buttons, Button
     );
     it('instantiates with nothing active', () => {
-      for (let button of listOfSingleButtonComponents) {
+      for (let button of listOfSingleButtonComponents)
         expect(button.state.isActive).toBe(false);
-      }
-      for (let button of listOfBootstrapButtonComponents) {
+      for (let button of listOfBootstrapButtonComponents)
         expect(button.props.active).toBe(false);
-      }
     });
 
     it('switches state when clicked', () => {
