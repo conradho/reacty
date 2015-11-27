@@ -38,7 +38,8 @@ class ManyButtons extends React.Component {
     this.boundedOnActiveChange = R.bind(this.onActiveChange, this);
   }
   onActiveChange (key) {
-    // console.log(`clicked ${key}`);
+    console.log(`clicked ${key}`);
+    console.log(`old active ${this.state.activeButton}`);
     this.setState({activeButton: key});
   }
   render () {

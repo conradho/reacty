@@ -97,6 +97,9 @@ describe('ManyButtons react component', () => {
     const listOfBootstrapButtonComponents = TestUtils.scryRenderedComponentsWithType(
       buttons, Button
     );
+    const listOfButtonDomComponents = TestUtils.scryRenderedDOMComponentsWithTag(
+        buttons, 'button'
+    );
     it('instantiates with nothing active', () => {
       for (let button of listOfSingleButtonComponents)
         expect(button.state.isActive).toBe(false);
@@ -105,15 +108,29 @@ describe('ManyButtons react component', () => {
     });
 
     it('switches state when clicked', () => {
-      const listOfButtonDomComponents = TestUtils.scryRenderedDOMComponentsWithTag(
-          buttons, 'button'
-      );
       const secondButton = listOfButtonDomComponents[1];
+
       // console.log(`before ${buttons.state.activeButton}`);
       TestUtils.Simulate.click(secondButton);
       // console.log(`after ${buttons.state.activeButton}`);
+
       expect(listOfSingleButtonComponents[1].state.isActive).toBe(true);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
+
+      TestUtils.Simulate.click(secondButton);
+
+      expect(listOfSingleButtonComponents[1].state.isActive).toBe(false);
+      expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
+    });
+
+    it('clears other active buttons when clicked', () => {
+      TestUtils.Simulate.click(listOfButtonDomComponents[1]);
+      TestUtils.Simulate.click(listOfButtonDomComponents[2]);
+
+      expect(listOfSingleButtonComponents[1].state.isActive).toBe(false);
+      expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
+      expect(listOfSingleButtonComponents[2].state.isActive).toBe(true);
+      expect(listOfBootstrapButtonComponents[2].props.active).toBe(true);
     });
   });
 });
