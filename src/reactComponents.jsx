@@ -1,5 +1,3 @@
-/*eslint-env commonjs */
-
 import React from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import R from 'ramda';
@@ -45,4 +43,4 @@ class ManyButtons extends React.Component {
     );
   }
 }
-export { ManyButtons };
+export { SingleButton, ManyButtons };

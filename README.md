@@ -39,3 +39,7 @@ notes
     - test it has xyz in header after rendering
     - test it has incorp'd xyz component?
     - test on click etc behavior
+
+todo
+====
+- maybe at some pt move some of the jest unmockedModulePathPatterns stuff into individual specs (eg: bootstrap)

@@ -10,8 +10,15 @@
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/*"
+      "<rootDir>/node_modules/react*",
+      "<rootDir>/node_modules/fbjs",
+      "<rootDir>/node_modules/babel*",
+      "<rootDir>/node_modules/core-js",
+      "<rootDir>/node_modules/dom-helpers",
+      "<rootDir>/node_modules/uncontrollable",
+      "<rootDir>/node_modules/ramda"
     ],
+    "testRunner": "<rootDir>/node_modules/jest-cli/src/testRunners/jasmine/jasmine2.js",
     "testPathDirs": [
       "<rootDir>/src"
     ],
@@ -42,7 +49,7 @@
     "babel-preset-react": "~6.1.18",
     "babelify": "~7.2.0",
     "browserify": "^12.0.1",
-    "jest-cli": "*",
+    "jest-cli": "^0.8.0",
     "ramda": "^0.18.0",
     "react": "~0.14.2",
     "react-addons-test-utils": "~0.14.0",
