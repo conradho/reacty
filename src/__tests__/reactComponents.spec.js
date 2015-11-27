@@ -79,9 +79,9 @@ describe('ManyButtons react component', () => {
     );
     const secondButton = listOfButtonDomComponents[1];
 
-    console.log(`before ${buttons.state.activeButton}`);
+    // console.log(`before ${buttons.state.activeButton}`);
     TestUtils.Simulate.click(secondButton);
-    console.log(`after ${buttons.state.activeButton}`);
+    // console.log(`after ${buttons.state.activeButton}`);
     expect(listOfSingleButtonComponents[1].state.isActive).toBe(true);
     expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
   });

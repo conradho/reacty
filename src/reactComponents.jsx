@@ -6,6 +6,10 @@ class SingleButton extends React.Component {
   constructor (props) {
     super(props);
     this.state = {isActive: false};
+    // needed because handleClick needs this.setState etc
+    // es6 classes don't automatically bind this
+    // see http://reactjsnews.com/es6-gotchas/
+    // can also use R.bind
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick () {
@@ -29,10 +33,12 @@ class ManyButtons extends React.Component {
   constructor (props) {
     super(props);
     this.state = {activeButton: 1};
-    this.onActiveChange = this.onActiveChange.bind(this);
+    // need this because es6 classes do not auto-bind
+    // and onActiveChange calls this.setState
+    this.boundedOnActiveChange = R.bind(this.onActiveChange, this);
   }
   onActiveChange (key) {
-    console.log(`clicked ${key}`);
+    // console.log(`clicked ${key}`);
     this.setState({activeButton: key});
   }
   render () {
@@ -45,7 +51,11 @@ class ManyButtons extends React.Component {
                 key={script.id}
                 name={script.name}
                 buttonStyle={script.style}
-                onActiveChange={this.onActiveChange.bind(this, script.id)}
+                // bind additional argument script.id as the key
+                // and return function instead of calling it
+                onActiveChange={
+                  R.partial(this.boundedOnActiveChange, [ script.id ])
+                }
               />
             );
           },
