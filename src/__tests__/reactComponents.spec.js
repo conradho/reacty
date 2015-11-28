@@ -11,7 +11,6 @@ import R from 'ramda';
 jest.dontMock('../reactComponents.jsx');
 const reactComponents = require('../reactComponents.jsx');
 const ManyButtons = reactComponents.ManyButtons;
-const SingleButton = reactComponents.SingleButton;
 
 
 describe('ManyButtons react component', () => {
@@ -39,22 +38,23 @@ describe('ManyButtons react component', () => {
     });
     it('has children with the correct type', () => {
       R.map((child) => {
-        // expect(TestUtils.isElementOfType(child, SingleButton)).toBe(true);
-        expect(child.type).toBe(SingleButton);
+        // expect(TestUtils.isElementOfType(child, Button)).toBe(true);
+        expect(child.type).toBe(Button);
       })(result.props.children);
     });
     it('has child with the correct properties', () => {
       const secondChild = result.props.children[1];
       expect(secondChild).toEqual(
-        <SingleButton
+        <Button
           key='idy2'
-          name='scripty2'
-          buttonStyle='primary'
+          bsStyle='primary'
           // on one hand, this doesn't really test anything
           // on the other hand, this is never true unless you pass it in
-          onActiveChange={secondChild.props.onActiveChange}
-          isActive={false}
-        />
+          onClick={secondChild.props.onClick}
+          active={false}
+          >
+          scripty2
+        </Button>
       );
     });
   });
@@ -92,9 +92,6 @@ describe('ManyButtons react component', () => {
   });
 
   describe('clicking', () => {
-    const listOfSingleButtonComponents = TestUtils.scryRenderedComponentsWithType(
-      buttons, SingleButton
-    );
     const listOfBootstrapButtonComponents = TestUtils.scryRenderedComponentsWithType(
       buttons, Button
     );
@@ -102,10 +99,9 @@ describe('ManyButtons react component', () => {
         buttons, 'button'
     );
     it('instantiates with nothing active', () => {
-      for (let button of listOfSingleButtonComponents)
-        expect(button.props.isActive).toBe(false);
-      for (let button of listOfBootstrapButtonComponents)
+      for (let button of listOfBootstrapButtonComponents) {
         expect(button.props.active).toBe(false);
+      }
     });
 
     it('switches state when clicked', () => {
@@ -115,12 +111,10 @@ describe('ManyButtons react component', () => {
       TestUtils.Simulate.click(secondButton);
       // console.log(`after ${buttons.state.activeButton}`);
 
-      expect(listOfSingleButtonComponents[1].props.isActive).toBe(true);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
 
       TestUtils.Simulate.click(secondButton);
 
-      expect(listOfSingleButtonComponents[1].props.isActive).toBe(false);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
     });
 
@@ -128,9 +122,7 @@ describe('ManyButtons react component', () => {
       TestUtils.Simulate.click(listOfButtonDomComponents[1]);
       TestUtils.Simulate.click(listOfButtonDomComponents[2]);
 
-      expect(listOfSingleButtonComponents[1].props.isActive).toBe(false);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
-      expect(listOfSingleButtonComponents[2].props.isActive).toBe(true);
       expect(listOfBootstrapButtonComponents[2].props.active).toBe(true);
     });
   });

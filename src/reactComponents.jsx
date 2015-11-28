@@ -2,26 +2,10 @@ import React from 'react';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import R from 'ramda';
 
-class SingleButton extends React.Component {
-  constructor (props) {
-    super(props);
-  }
-  render () {
-    return (
-      <Button
-        active={this.props.isActive}
-        bsStyle={this.props.buttonStyle}
-        onClick={this.props.onActiveChange}
-        >
-        {this.props.name}
-      </Button>
-    );
-  }
-}
-
 class ManyButtons extends React.Component {
   constructor (props) {
     super(props);
+    // or just this.state = {}
     this.state = {activeButton: null};
     // need this because es6 classes do not auto-bind
     // and onActiveChange calls this.setState
@@ -40,17 +24,18 @@ class ManyButtons extends React.Component {
         {R.map(
           (script) => {
             return (
-              <SingleButton
+              <Button
                 key={script.id}
-                name={script.name}
-                buttonStyle={script.style}
+                bsStyle={script.style}
                 // bind additional argument script.id as the key
                 // and return function instead of calling it
-                onActiveChange={
+                onClick={
                   R.partial(this.boundedOnActiveChange, [ script.id ])
                 }
-                isActive={this.state.activeButton === script.id}
-              />
+                active={this.state.activeButton === script.id}
+                >
+                {script.name}
+              </Button>
             );
           },
           this.props.scripts
@@ -59,4 +44,4 @@ class ManyButtons extends React.Component {
     );
   }
 }
-export { SingleButton, ManyButtons };
+export { ManyButtons };
