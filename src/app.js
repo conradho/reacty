@@ -2,7 +2,7 @@ import React from 'react';
 // import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 
-import { ManyButtons } from './reactComponents.jsx';
+import ManyButtons from './components/ManyButtons.jsx';
 
 const scripts = [
   {'id': 1, 'name': 'scripty1', 'style': 'default'},

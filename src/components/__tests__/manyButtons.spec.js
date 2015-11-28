@@ -7,9 +7,8 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 import R from 'ramda';
 
 // import { buttonsInstance } from '../reactBootstrapButton.jsx';
-jest.dontMock('../reactComponents.jsx');
-const reactComponents = require('../reactComponents.jsx');
-const ManyButtons = reactComponents.ManyButtons;
+jest.dontMock('../manyButtons.jsx');
+const ManyButtons = require('../manyButtons.jsx').default;
 
 
 describe('ManyButtons react component', () => {

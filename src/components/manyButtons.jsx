@@ -48,4 +48,4 @@ class ManyButtons extends React.Component {
   }
 }
 
-export { ManyButtons };
+export default ManyButtons;

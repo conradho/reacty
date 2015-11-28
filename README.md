@@ -43,3 +43,5 @@ notes
 todo
 ====
 - maybe at some pt move some of the jest unmockedModulePathPatterns stuff into individual specs (eg: bootstrap)
+- zoom in / zoom out, detailed view with edit/trash etc vs just mobile view with clickable
+- local storage of what was previously selected?
