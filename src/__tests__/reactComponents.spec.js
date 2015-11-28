@@ -20,9 +20,9 @@ describe('ManyButtons react component', () => {
   });
 
   const mockScripts = [
-    {'id': 1, 'name': 'scripty1', 'style': 'default'},
-    {'id': 2, 'name': 'scripty2', 'style': 'primary'},
-    {'id': 3, 'name': 'touch me', 'style': 'danger'},
+    {'id': 'idy1', 'name': 'scripty1', 'style': 'default'},
+    {'id': 'idy2', 'name': 'scripty2', 'style': 'primary'},
+    {'id': 'idy3', 'name': 'touch me', 'style': 'danger'},
   ];
 
   describe('shallow render', () => {
@@ -47,12 +47,13 @@ describe('ManyButtons react component', () => {
       const secondChild = result.props.children[1];
       expect(secondChild).toEqual(
         <SingleButton
-          key='2'
+          key='idy2'
           name='scripty2'
           buttonStyle='primary'
           // on one hand, this doesn't really test anything
           // on the other hand, this is never true unless you pass it in
           onActiveChange={secondChild.props.onActiveChange}
+          isActive={false}
         />
       );
     });
@@ -102,7 +103,7 @@ describe('ManyButtons react component', () => {
     );
     it('instantiates with nothing active', () => {
       for (let button of listOfSingleButtonComponents)
-        expect(button.state.isActive).toBe(false);
+        expect(button.props.isActive).toBe(false);
       for (let button of listOfBootstrapButtonComponents)
         expect(button.props.active).toBe(false);
     });
@@ -114,12 +115,12 @@ describe('ManyButtons react component', () => {
       TestUtils.Simulate.click(secondButton);
       // console.log(`after ${buttons.state.activeButton}`);
 
-      expect(listOfSingleButtonComponents[1].state.isActive).toBe(true);
+      expect(listOfSingleButtonComponents[1].props.isActive).toBe(true);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
 
       TestUtils.Simulate.click(secondButton);
 
-      expect(listOfSingleButtonComponents[1].state.isActive).toBe(false);
+      expect(listOfSingleButtonComponents[1].props.isActive).toBe(false);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
     });
 
@@ -127,9 +128,9 @@ describe('ManyButtons react component', () => {
       TestUtils.Simulate.click(listOfButtonDomComponents[1]);
       TestUtils.Simulate.click(listOfButtonDomComponents[2]);
 
-      expect(listOfSingleButtonComponents[1].state.isActive).toBe(false);
+      expect(listOfSingleButtonComponents[1].props.isActive).toBe(false);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
-      expect(listOfSingleButtonComponents[2].state.isActive).toBe(true);
+      expect(listOfSingleButtonComponents[2].props.isActive).toBe(true);
       expect(listOfBootstrapButtonComponents[2].props.active).toBe(true);
     });
   });

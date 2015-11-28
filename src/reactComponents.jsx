@@ -5,23 +5,13 @@ import R from 'ramda';
 class SingleButton extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {isActive: false};
-    // needed because handleClick needs this.setState etc
-    // es6 classes don't automatically bind this
-    // see http://reactjsnews.com/es6-gotchas/
-    // can also use R.bind
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick () {
-    this.setState({isActive: !this.state.isActive});
-    this.props.onActiveChange();
   }
   render () {
     return (
       <Button
-        active={this.state.isActive}
+        active={this.props.isActive}
         bsStyle={this.props.buttonStyle}
-        onClick={this.handleClick}
+        onClick={this.props.onActiveChange}
         >
         {this.props.name}
       </Button>
@@ -32,15 +22,17 @@ class SingleButton extends React.Component {
 class ManyButtons extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {activeButton: 1};
+    this.state = {activeButton: null};
     // need this because es6 classes do not auto-bind
     // and onActiveChange calls this.setState
     this.boundedOnActiveChange = R.bind(this.onActiveChange, this);
   }
   onActiveChange (key) {
-    console.log(`clicked ${key}`);
-    console.log(`old active ${this.state.activeButton}`);
-    this.setState({activeButton: key});
+    // console.log(`clicked ${key}`);
+    // console.log(`old active ${this.state.activeButton}`);
+    this.setState({
+      activeButton: (key === this.state.activeButton) ? null : key,
+    });
   }
   render () {
     return (
@@ -57,6 +49,7 @@ class ManyButtons extends React.Component {
                 onActiveChange={
                   R.partial(this.boundedOnActiveChange, [ script.id ])
                 }
+                isActive={this.state.activeButton === script.id}
               />
             );
           },
