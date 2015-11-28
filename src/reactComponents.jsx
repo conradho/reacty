@@ -3,14 +3,16 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 import R from 'ramda';
 
 class ManyButtons extends React.Component {
+
   constructor (props) {
     super(props);
     // or just this.state = {}
     this.state = {activeButton: null};
     // need this because es6 classes do not auto-bind
     // and onActiveChange calls this.setState
-    this.boundedOnActiveChange = R.bind(this.onActiveChange, this);
+    this.boundOnActiveChange = R.bind(this.onActiveChange, this);
   }
+
   onActiveChange (key) {
     // console.log(`clicked ${key}`);
     // console.log(`old active ${this.state.activeButton}`);
@@ -18,6 +20,7 @@ class ManyButtons extends React.Component {
       activeButton: (key === this.state.activeButton) ? null : key,
     });
   }
+
   render () {
     return (
       <ButtonToolbar bsSize='small'>
@@ -30,7 +33,7 @@ class ManyButtons extends React.Component {
                 // bind additional argument script.id as the key
                 // and return function instead of calling it
                 onClick={
-                  R.partial(this.boundedOnActiveChange, [ script.id ])
+                  R.partial(this.boundOnActiveChange, [ script.id ])
                 }
                 active={this.state.activeButton === script.id}
                 >
@@ -44,4 +47,5 @@ class ManyButtons extends React.Component {
     );
   }
 }
+
 export { ManyButtons };

@@ -1,6 +1,5 @@
 /*eslint-env jest */
 
-
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
@@ -62,6 +61,7 @@ describe('ManyButtons react component', () => {
   const buttons = TestUtils.renderIntoDocument(
     <ManyButtons scripts={mockScripts}/>
   );
+
   describe('deeper render', () => {
     it('turns into a composite component if given correct props', () => {
       expect(TestUtils.isCompositeComponent(buttons)).toBe(true);
@@ -98,23 +98,23 @@ describe('ManyButtons react component', () => {
     const listOfButtonDomComponents = TestUtils.scryRenderedDOMComponentsWithTag(
         buttons, 'button'
     );
+
     it('instantiates with nothing active', () => {
       for (let button of listOfBootstrapButtonComponents) {
         expect(button.props.active).toBe(false);
       }
+      expect(buttons.state.activeButton).toBe(null);
     });
 
     it('switches state when clicked', () => {
       const secondButton = listOfButtonDomComponents[1];
 
-      // console.log(`before ${buttons.state.activeButton}`);
       TestUtils.Simulate.click(secondButton);
-      // console.log(`after ${buttons.state.activeButton}`);
-
+      expect(buttons.state.activeButton).toBe('idy2');
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(true);
 
       TestUtils.Simulate.click(secondButton);
-
+      expect(buttons.state.activeButton).toBe(null);
       expect(listOfBootstrapButtonComponents[1].props.active).toBe(false);
     });
 
@@ -127,4 +127,3 @@ describe('ManyButtons react component', () => {
     });
   });
 });
-
