@@ -1,14 +1,17 @@
+// for more info see
+// http://thesassway.com/beginner/how-to-structure-a-sass-project
+
 // Modules and Variables
 // Sass code that doesn't cause Sass to actually output CSS.
 // Things like mixin declarations, functions, and variables.
+// base calls modules/_all.scss to get all these utility modules
 @import "partials/base";
 
-// Partials
+// Partials- the actual code. each file here will do a single
+// import base to get access to my entire Sass environment
+// (ie. the variables and the modules)
+@import "partials/navbar";
 
 // Third-party stuff not to be modified
-@import "vendor/bourbon/bourbon";
-
-.special {
-    background: #990000; }
-    .special p {
-      color: #ccccff; }
+// eg: bootstrap? which just acts on its own dom stuff
+// and doesn't need to be imported in your scss

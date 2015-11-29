@@ -8,7 +8,7 @@ setup
     - then after sourcing bash again, nvm install 5.0.0
 - install local packages with `npm install`
 - gem install sass
-- gem install bourbon && bourbon install --path stylesheets/vendor
+- gem install bourbon && gem install neat && cd stylesheets/vendor && bourbon install && neat install
 - download a `bootstrap.min.css` from bootstrap
 - `node run build` to build bundle.js and bundle.css each change
     - or `node run js`, `node run css` to build individually

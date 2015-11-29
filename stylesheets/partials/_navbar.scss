@@ -1,0 +1,42 @@
+@import "base";
+
+// http://blog.stevensanderson.com/2011/10/05/full-height-app-layouts-a-css-trick-to-make-it-easier/
+/*
+#screen {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: $background-color;
+}
+*/
+
+// so that footer will not have blank space on the left
+// also so that there is no black space at the top
+* {
+    margin: 0;
+}
+
+// so that footer will be at bottom of page even if 
+// page is short/there is not enough content
+html, body {
+    height: 100%;
+}
+
+.sticky-body {
+    @include calc(max-height, '100% - #{$navbar-height}');
+    // @include margin(null 0 (-$navbar-height) 0);
+    background: $background-color;
+    overflow: scroll;
+}
+
+.sticky-footer {
+    @include size(100% $navbar-height);
+    position: fixed;
+    bottom: 0;
+    background: $navbar-color;
+    z-index: 999;
+}
