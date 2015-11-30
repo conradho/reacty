@@ -1,3 +1,4 @@
+// https://github.com/uberVU/react-guide/blob/master/component-mixin-lib.md
 // for more info see
 // http://thesassway.com/beginner/how-to-structure-a-sass-project
 
@@ -10,7 +11,7 @@
 // Partials- the actual code. each file here will do a single
 // import base to get access to my entire Sass environment
 // (ie. the variables and the modules)
-@import "partials/navbar";
+@import "partials/sticky-footer";
 
 // Third-party stuff not to be modified
 // eg: bootstrap? which just acts on its own dom stuff
