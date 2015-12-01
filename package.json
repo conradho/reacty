@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
-    "build": "npm run js && sass stylesheets/main.scss static/bundle.css",
+    "build": "browserify -t [ babelify --presets [ react es2015 ] ] src/app.js | uglifyjs > static/bundle.js && sass stylesheets/main.scss static/bundle.css",
     "js": "browserify -t [ babelify --presets [ react es2015 ] ] src/app.js -o static/bundle.js",
     "css": "sass --watch stylesheets/main.scss:static/bundle.css"
   },
@@ -56,6 +56,7 @@
     "react": "~0.14.2",
     "react-addons-test-utils": "~0.14.0",
     "react-bootstrap": "~0.27.3",
-    "react-dom": "~0.14.2"
+    "react-dom": "~0.14.2",
+    "uglifyjs": "^2.4.10"
   }
 }
