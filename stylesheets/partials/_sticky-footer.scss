@@ -29,6 +29,7 @@ html, body {
 .sticky-footer {
     @at-root #{&}--body {
         // @include calc(height, '100% - #{$navbar-height}');
+        // note: dont need to do calc again here
         @include size(100% (100 - $navbar-height));
         @include calc(max-height, '100% - #{$navbar-min-height}');
         // @include margin(null 0 (-$navbar-height) 0);

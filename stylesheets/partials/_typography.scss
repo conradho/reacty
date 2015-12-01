@@ -4,23 +4,21 @@ html {
 }
 
 body {
-  color: $base-font-color;
-  font-family: $base-font-family;
+  font-family: map-get($base-font, family...);  // expanding the list
+  color: map-get($base-font, color);
+  font-size: map-get($base-font, size);
+  line-height: map-get($base-font, height);
   font-feature-settings: "kern", "liga", "pnum";
-  font-size: $base-font-size;
-  line-height: $base-line-height;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $heading-font-family;
-  font-size: $heading-font-size;
-  line-height: $heading-line-height;
-  margin: 0 0 $small-spacing;
+// loop through h1, h2, h3
+@for $ii from 1 through 3 {
+  h#{$ii} {
+    font-family: map-get($heading-font, family...);
+    font-size: modular-scale(3 - $ii);
+    line-height: map-get($heading-font, height);
+    margin: 0 0 $small-spacing;
+  }
 }
 
 p {
@@ -44,7 +42,7 @@ hr {
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: $base-spacing 0;
+  margin: map-get($base-font, spacing) 0;
 }
 
 img,
