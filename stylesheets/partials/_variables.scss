@@ -49,6 +49,7 @@ $base-timing: ease;
 $navbar-color: $dark-gray;
 $navbar-font-color: $light-gray;
 $navbar-height: 5vh;
+$navbar-min-height: $base-line-height * $base-font-size;
 
 // neat debug stuff
 // $visual-grid: true;

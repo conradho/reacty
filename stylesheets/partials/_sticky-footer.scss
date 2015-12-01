@@ -28,14 +28,16 @@ html, body {
 // bem naming https://css-tricks.com/bem-101/
 .sticky-footer {
     @at-root #{&}--body {
-        @include calc(max-height, '100% - #{$navbar-height}');
+        // @include calc(height, '100% - #{$navbar-height}');
+        @include size(100% (100 - $navbar-height));
+        @include calc(max-height, '100% - #{$navbar-min-height}');
         // @include margin(null 0 (-$navbar-height) 0);
         background: $base-background-color;
         overflow: scroll;
     }
     @at-root #{&}--footer {
         @include size(100% $navbar-height);
-        @include calc(min-height, '#{$base-line-height} * #{$base-font-size}');
+        min-height: $navbar-min-height;
         position: fixed;
         bottom: 0;
         background: $navbar-color;
