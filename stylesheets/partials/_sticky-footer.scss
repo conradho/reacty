@@ -1,4 +1,3 @@
-@import "base";
 
 // http://blog.stevensanderson.com/2011/10/05/full-height-app-layouts-a-css-trick-to-make-it-easier/
 /*
@@ -31,14 +30,16 @@ html, body {
     @at-root #{&}--body {
         @include calc(max-height, '100% - #{$navbar-height}');
         // @include margin(null 0 (-$navbar-height) 0);
-        background: $background-color;
+        background: $base-background-color;
         overflow: scroll;
     }
     @at-root #{&}--footer {
         @include size(100% $navbar-height);
+        @include calc(min-height, '#{$base-line-height} * #{$base-font-size}');
         position: fixed;
         bottom: 0;
         background: $navbar-color;
+        color: $navbar-font-color;
         z-index: 999;
     }
 }

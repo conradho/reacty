@@ -1,36 +1,9 @@
-// so that every style sheet will be able to use
-// its features
-$visual-grid: true;
-$visual-grid-color: #faa;
-$visual-grid-index: front;
-
-@import "../vendor/bourbon/bourbon";
-@import "../vendor/neat/neat";
-
-// Font weights
-$light: 100;
-$regular: 400;
-$bold: 600;
-
-// Base Font
-$base-font-family: sans-serif;
-$base-font-weight: $regular;
-$base-font-size: 13px;
-$base-line-height: 1.4;
-
-// Fixed Font
-$fixed-font-family: monospace;
-$fixed-font-size: 85%;
-$fixed-line-height: $base-line-height;
-
-// Headings
-$header-font-weight: $bold;
-
-// Colors
-$background-color: darkgrey;
-$navbar-color: blue;
-
-// dimensions
-$navbar-height: 5vh;
+// this base style sheet will be imported in all the partials
+// so that every style sheet will be able to use what is setup here
 
 @import "../modules/all";
+
+@import "variables";
+
+@import "../vendor/neat/neat";
+
