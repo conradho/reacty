@@ -9,6 +9,7 @@ body {
   font-size: map-get($base-font, size);
   line-height: map-get($base-font, height);
   font-feature-settings: "kern", "liga", "pnum";
+  word-wrap: break-word;
 }
 
 // loop through h1, h2, h3
