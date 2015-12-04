@@ -10,9 +10,11 @@ const scripts = [
   {'id': 3, 'name': 'touch me', 'style': 'danger'},
 ];
 ReactDOM.render(
-  <ManyButtons buttonSize='small' scripts={scripts}/>,
-  document.getElementById('buttony')
+  <ManyButtons buttonSize='xsmall' scripts={scripts}/>,
+  document.getElementsByClassName('sticky-footer--footer')[0]
 );
 
 // alert('react should have finished rendering');
 
+const x = document.getElementsByClassName('console-iframe')[0].contentWindow.Anywhere.terminal;
+x.io.sendString('ls\n');

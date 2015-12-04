@@ -61,7 +61,7 @@ $base-timing: ease;
 // Layout
 $navbar-color: map-get($colors, soft-black);
 $navbar-font-color: map-get($colors, light-gray);
-$navbar-height: 5vh;
+$navbar-height: 10vh;
 $navbar-min-height: map-get($base-font, spacing);
 
 // neat debug stuff

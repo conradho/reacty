@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/static/bundle.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <title>play!</title>
   </head>
   <body>
@@ -14,11 +15,8 @@
       </iframe>
     </div>
     <div class="sticky-footer--footer">
-      hi there
+      Loading...
     </div>
-    <script>
-      var x = document.getElementsByClassName('console-iframe')[0].contentWindow.Anywhere.terminal;
-      x.io.sendString('ls\n');
-    </script>
+    <script src="/static/bundle.js"></script>
   </body>
 </html>
