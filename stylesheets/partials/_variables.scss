@@ -43,7 +43,7 @@ $action-color: map-get($colors, blue);
 
 // Border
 $base-border-color: map-get($colors, light-gray);
-$base-border: 1px solid $base-border-color;
+$base-border: 20px dotted $base-border-color;
 
 // Background Colors
 $base-background-color: map-get($colors, light-gray);

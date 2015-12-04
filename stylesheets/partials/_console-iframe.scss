@@ -1,5 +1,5 @@
 
 .console-iframe {
   @include size(100% 100%);
-  border: none;
+  @include no-spacing();
 }
