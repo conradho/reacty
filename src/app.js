@@ -2,18 +2,20 @@ import React from 'react';
 // import { render } from 'react-dom';
 import ReactDOM from 'react-dom';
 
-import ManyButtons from './components/manyButtons.jsx';
+import ConsoleButtons from './components/consoleButtons.jsx';
 
-const scripts = [
-  {'id': 1, 'name': 'scripty1', 'style': 'default'},
-  {'id': 2, 'name': 'scripty2', 'style': 'primary'},
-  {'id': 3, 'name': 'touch me', 'style': 'danger'},
+const shortcuts = [
+  {'id': 1, 'name': 'Navigation'},
+  {'id': 2, 'name': 'Keypresses'},
+  {'id': 3, 'name': 'Common Commands'},
+  {'id': 4, 'name': 'Start "apps"'},
+  {'id': 5, 'name': 'Custom'},
 ];
+
 ReactDOM.render(
-  <ManyButtons buttonSize='xsmall' scripts={scripts}/>,
+  <ConsoleButtons shortcuts={shortcuts}/>,
   document.getElementsByClassName('sticky-footer--footer')[0]
 );
-
 // alert('react should have finished rendering');
 
 const x = document.getElementsByClassName('console-iframe')[0].contentWindow.Anywhere.terminal;
