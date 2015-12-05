@@ -4,11 +4,11 @@ import R from 'ramda';
 
 
 
-class ConsoleButtons extends React.Component {
+class ConsoleToolbar extends React.Component {
 
   constructor (props) {
     super(props);
-    this.state = {}
+    this.state = {currentMenu: 0};
   }
 
   handleClick (keypress) {
@@ -20,24 +20,26 @@ class ConsoleButtons extends React.Component {
   render () {
     return (
       <div>
+        <button
+          className="console-toolbar--button console-toolbar--button__important"
+          >
+          {this.props.toolbarItems[0].menuName}
+        </button>
         {R.map(
-          (script) => {
+          (menuItem) => {
             return (
               <button
-                key={script.id}
-                onClick={
-                  R.partial(this.handleClick, [ script.id ])
-                }
+                className="console-toolbar--button console-toolbar--button__normal"
                 >
-                {script.name}
+                {menuItem[0]}
               </button>
             );
           },
-          this.props.shortcuts
+          R.toPairs(this.props.toolbarItems[0].menuItems)
         )}
       </div>
     );
   }
 }
 
-export default ConsoleButtons;
+export default ConsoleToolbar;

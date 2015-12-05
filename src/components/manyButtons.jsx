@@ -23,13 +23,12 @@ class ManyButtons extends React.Component {
 
   render () {
     return (
-      <ButtonToolbar>
+      <ButtonToolbar bsSize="xsmall">
         {R.map(
           (script) => {
             return (
               <Button
                 key={script.id}
-                bsSize={this.props.buttonSize}
                 bsStyle={script.style}
                 // bind additional argument script.id as the key
                 // and return function instead of calling it

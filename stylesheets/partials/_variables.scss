@@ -12,6 +12,8 @@ $colors: (
   soft-black: #555,
   medium-gray: #999,
   light-gray: #ddd,
+  bright-green: #65F3B3,
+  bright-blue: #14BCC8,
 );
 
 $base-font: (
@@ -61,8 +63,8 @@ $base-timing: ease;
 // Layout
 $navbar-color: map-get($colors, soft-black);
 $navbar-font-color: map-get($colors, light-gray);
-$navbar-height: 8vh;
-$navbar-min-height: map-get($base-font, spacing);
+$navbar-height: 5vh;
+$navbar-min-height: map-get($base-font, spacing) + 0.4rem; //buttons
 
 // neat debug stuff
 // $visual-grid: true;

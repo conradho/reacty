@@ -1,0 +1,20 @@
+.console-toolbar {
+  display: inline-block;
+
+  @at-root #{&}--button {
+    font: inherit;
+    border-radius: 0;
+  }
+  @at-root #{&}--button__important {
+    border: 0.15rem solid map-get($colors, bright-green);
+    color: map-get($colors, bright-blue);
+    background: none;
+  }
+  @at-root #{&}--button__normal {
+    border: 0.15rem solid map-get($colors, blue);
+    color: map-get($colors, blue);
+    background: none;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+}
