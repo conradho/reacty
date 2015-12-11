@@ -42,6 +42,11 @@ notes
     - test it has xyz in header after rendering
     - test it has incorp'd xyz component?
     - test on click etc behavior
+- react reading
+    - https://speakerdeck.com/vjeux/react-css-in-js
+    - https://github.com/enaqx/awesome-react
+    - http://aeflash.com/2015-02/react-tips-and-best-practices.html
+- [hterm reference]( https://github.com/macton/hterm/blob/master/src/hterm_terminal_io.js)
 
 todo
 ====
