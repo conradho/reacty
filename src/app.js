@@ -35,11 +35,15 @@ const toolbarItems = [
   },
 ];
 
+function sendKeyToConsole(keypress) {
+  console.log('pressed: ' + keypress);
+  const iframeWindow = document.getElementsByClassName('console-iframe')[0].contentWindow;
+  iframeWindow.Anywhere.terminal.io.sendString(keypress);
+}
+
 ReactDOM.render(
-  <ConsoleToolbar toolbarItems={toolbarItems}/>,
+  <ConsoleToolbar toolbarItems={toolbarItems} sendKey={sendKeyToConsole}/>,
   document.getElementsByClassName('console-toolbar')[0]
 );
 // alert('react should have finished rendering');
 
-const x = document.getElementsByClassName('console-iframe')[0].contentWindow.Anywhere.terminal;
-x.io.sendString('ls\n');

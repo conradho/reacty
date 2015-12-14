@@ -9,12 +9,19 @@ class ConsoleToolbar extends React.Component {
   constructor (props) {
     super(props);
     this.state = {currentMenu: 0};
+    // es6 does not auto-bind
+    this.handleMenuClick = R.bind(this.handleMenuClick, this);
+    this.handleClick = R.bind(this.handleClick, this);
+  }
+
+  handleMenuClick (keypress) {
+    this.setState({
+      currentMenu: (this.state.currentMenu + 1) % this.props.toolbarItems.length
+    });
   }
 
   handleClick (keypress) {
-    console.log('hi' + keypress);
-    const x = document.getElementsByClassName('console-iframe')[0].contentWindow.Anywhere.terminal;
-    x.io.sendString('ls\n');
+    this.props.sendKey(keypress);
   }
 
   render () {
@@ -22,20 +29,23 @@ class ConsoleToolbar extends React.Component {
       <div>
         <button
           className="console-toolbar--button console-toolbar--button__important"
+          onClick={this.handleMenuClick}
           >
-          {this.props.toolbarItems[0].menuName}
+          {this.props.toolbarItems[this.state.currentMenu].menuName}
         </button>
-        {R.map(
-          (menuItem) => {
+        {R.addIndex(R.map)(
+          (menuItem, idx) => {
             return (
               <button
+                key={idx}
                 className="console-toolbar--button console-toolbar--button__normal"
+                onClick={R.partial(this.handleClick, [menuItem[1]])}
                 >
                 {menuItem[0]}
               </button>
             );
           },
-          R.toPairs(this.props.toolbarItems[0].menuItems)
+          R.toPairs(this.props.toolbarItems[this.state.currentMenu].menuItems)
         )}
       </div>
     );
