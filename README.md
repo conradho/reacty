@@ -10,9 +10,9 @@ setup
 - `gem install --user-install sass bourbon neat`
 - cd stylesheets/vendor && bourbon install && neat install
 - download a `bootstrap.min.css` from bootstrap
-- `node run build` to build bundle.js and bundle.css each change
-    - or `node run js`, `node run css` to build individually
-- `node test` or `node run test` to run tests
+- `nvm run build` to build bundle.js and bundle.css each change
+    - or `nvm run js`, `nvm run css` to build individually
+- `nvm test` or `nvm run test` to run tests
 
 
 Behind the scenes
